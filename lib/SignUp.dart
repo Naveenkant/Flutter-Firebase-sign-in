@@ -1,3 +1,4 @@
+import 'package:authentification/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -38,8 +39,7 @@ class _SignUpState extends State<SignUp> {
           // updateuser.displayName = _name;
           //  user.updateProfile(updateuser);
           await _auth.currentUser.updateProfile(displayName: _name);
-          // await Navigator.pushReplacementNamed(context,"/") ;
-
+          await Navigator.pushReplacementNamed(context, "/");
         }
       } catch (e) {
         showError(e.message);
@@ -66,80 +66,116 @@ class _SignUpState extends State<SignUp> {
         });
   }
 
+  navigateToLogin() async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 400,
-              child: Image(
-                image: AssetImage("images/login.jpg"),
-                fit: BoxFit.contain,
-              ),
-            ),
-            Container(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Name';
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            prefixIcon: Icon(Icons.person),
-                          ),
-                          onSaved: (input) => _name = input),
-                    ),
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Email';
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Email',
-                              prefixIcon: Icon(Icons.email)),
-                          onSaved: (input) => _email = input),
-                    ),
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.length < 6)
-                              return 'Provide Minimum 6 Character';
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.lock),
-                          ),
-                          obscureText: true,
-                          onSaved: (input) => _password = input),
-                    ),
-                    SizedBox(height: 20),
-                    RaisedButton(
-                      padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                      onPressed: signUp,
-                      child: Text('SignUp',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold)),
-                      color: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                    )
-                  ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: RichText(
+            text: TextSpan(style: TextStyle(fontSize: 22), children: <TextSpan>[
+              TextSpan(
+                text: 'Quiz',
+                style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  color: Colors.white,
                 ),
               ),
-            ),
-          ],
+              TextSpan(
+                  text: 'Maker',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue))
+            ]),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.2,
+          brightness: Brightness.light,
         ),
-      ),
-    ));
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 300,
+                  child: Image(
+                    image: AssetImage("images/login.jpg"),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                Container(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.isEmpty) return 'Enter Name';
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Name',
+                                prefixIcon: Icon(Icons.person),
+                              ),
+                              onSaved: (input) => _name = input),
+                        ),
+                        Container(
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.isEmpty) return 'Enter Email';
+                              },
+                              decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(Icons.email)),
+                              onSaved: (input) => _email = input),
+                        ),
+                        Container(
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.length < 6)
+                                  return 'Provide Minimum 6 Character';
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              obscureText: true,
+                              onSaved: (input) => _password = input),
+                        ),
+                        SizedBox(height: 20),
+                        RaisedButton(
+                          padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                          onPressed: signUp,
+                          child: Text('SignUp',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold)),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        // GestureDetector(
+                        //   child: Text(
+                        //     'Already have an Account?',
+                        //     style:
+                        //         TextStyle(decoration: TextDecoration.underline),
+                        //   ),
+                        //   onTap: navigateToLogin,
+                        // )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }

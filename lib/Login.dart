@@ -68,70 +68,97 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 400,
-              child: Image(
-                image: AssetImage("images/login.jpg"),
-                fit: BoxFit.contain,
-              ),
-            ),
-            Container(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Email';
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Email',
-                              prefixIcon: Icon(Icons.email)),
-                          onSaved: (input) => _email = input),
-                    ),
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.length < 6)
-                              return 'Provide Minimum 6 Character';
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.lock),
-                          ),
-                          obscureText: true,
-                          onSaved: (input) => _password = input),
-                    ),
-                    SizedBox(height: 20),
-                    RaisedButton(
-                      padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                      onPressed: login,
-                      child: Text('LOGIN',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold)),
-                      color: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                    )
-                  ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: RichText(
+            text: TextSpan(style: TextStyle(fontSize: 22), children: <TextSpan>[
+              TextSpan(
+                text: 'Quiz',
+                style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  color: Colors.white,
                 ),
               ),
-            ),
-            GestureDetector(
-              child: Text('Create an Account?'),
-              onTap: navigateToSignUp,
-            )
-          ],
+              TextSpan(
+                  text: 'Maker',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue))
+            ]),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.2,
+          brightness: Brightness.light,
         ),
-      ),
-    ));
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 400,
+                  child: Image(
+                    image: AssetImage("images/login.jpg"),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                Container(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.isEmpty) return 'Enter Email';
+                              },
+                              decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(Icons.email)),
+                              onSaved: (input) => _email = input),
+                        ),
+                        Container(
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.length < 6)
+                                  return 'Provide Minimum 6 Character';
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              obscureText: true,
+                              onSaved: (input) => _password = input),
+                        ),
+                        SizedBox(height: 20),
+                        RaisedButton(
+                          padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                          onPressed: login,
+                          child: Text('LOGIN',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold)),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  child: Text(
+                    'Create an Account?',
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
+                  onTap: navigateToSignUp,
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

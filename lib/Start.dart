@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:authentification/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -47,38 +50,60 @@ class _StartState extends State<Start> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        centerTitle: true,
+        title: RichText(
+          text: TextSpan(style: TextStyle(fontSize: 22), children: <TextSpan>[
+            TextSpan(
+              text: 'Quiz',
+              style: TextStyle(
+                fontWeight: FontWeight.w100,
+                color: Colors.white,
+              ),
+            ),
+            TextSpan(
+                text: 'Maker',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue))
+          ]),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.2,
+        brightness: Brightness.light,
+      ),
       body: Container(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 35.0),
+            // SizedBox(height: 35.0),
             Container(
               height: 400,
               child: Image(
-                image: AssetImage("images/start.jpg"),
-                fit: BoxFit.contain,
+                image: AssetImage("images/quiz.jpg"),
+                fit: BoxFit.fitHeight,
               ),
             ),
             SizedBox(height: 20),
-            RichText(
-                text: TextSpan(
-                    text: 'Welcome to ',
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                    children: <TextSpan>[
-                  TextSpan(
-                      text: 'X Groceries',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange))
-                ])),
+            // RichText(
+            //     text: TextSpan(
+            //         text: 'Welcome to ',
+            //         style: TextStyle(
+            //             fontSize: 25.0,
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.black),
+            //         children: <TextSpan>[
+            //       TextSpan(
+            //           text: 'X Groceries',
+            //           style: TextStyle(
+            //               fontSize: 30.0,
+            //               fontWeight: FontWeight.bold,
+            //               color: Colors.orange))
+            //     ])),
             SizedBox(height: 10.0),
-            Text(
-              'Fresh Groceries Delivered at your Doorstep',
-              style: TextStyle(color: Colors.black),
-            ),
+            // Text(
+            //   'Fresh Groceries Delivered at your Doorstep',
+            //   style: TextStyle(color: Colors.black),
+            // ),
             SizedBox(height: 30.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +122,7 @@ class _StartState extends State<Start> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Colors.orange),
+                    color: Colors.blue),
                 SizedBox(width: 20.0),
                 RaisedButton(
                     padding: EdgeInsets.only(left: 30, right: 30),
@@ -113,7 +138,7 @@ class _StartState extends State<Start> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Colors.orange),
+                    color: Colors.blue),
               ],
             ),
             SizedBox(height: 20.0),

@@ -1,7 +1,11 @@
 import 'package:authentification/Start.dart';
+import 'package:authentification/chala.dart';
+import 'package:authentification/screens/welcome/welcome_screen.dart';
+import 'package:authentification/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:authentification/Start.dart';
+import 'package:get/get.dart';
+import 'package:authentification/Start.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,44 +53,93 @@ class _HomePageState extends State<HomePage> {
     this.getUser();
   }
 
+  // movetoeverybody() async {
+  //   Navigator.pushReplacement(
+  //       context, MaterialPageRoute(builder: (context) => Everybody()));
+  // }
+
+  movetowelcome() async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // appBar: appBar(context),
+        appBar: AppBar(
+          centerTitle: true,
+          title: RichText(
+            text: TextSpan(style: TextStyle(fontSize: 22), children: <TextSpan>[
+              TextSpan(
+                text: 'Quiz',
+                style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  color: Colors.white,
+                ),
+              ),
+              TextSpan(
+                  text: 'Maker',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue))
+            ]),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.2,
+          brightness: Brightness.light,
+        ),
         body: Container(
-      child: !isloggedin
-          ? CircularProgressIndicator()
-          : Column(
-              children: <Widget>[
-                SizedBox(height: 40.0),
-                Container(
-                  height: 300,
-                  child: Image(
-                    image: AssetImage("images/welcome.jpg"),
-                    fit: BoxFit.contain,
-                  ),
+          child: !isloggedin
+              ? Center(child: CircularProgressIndicator())
+              : Column(
+                  children: <Widget>[
+                    SizedBox(height: 40.0),
+                    Container(
+                      height: 200,
+                      // child: Image(
+                      //   image: AssetImage("images/welcome.jpg"),
+                      //   fit: BoxFit.contain,
+                      // ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        "Hello ${user.displayName} you are Logged in as email : ${user.email}",
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 100,
+                    ),
+                    RaisedButton(
+                      padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                      onPressed: signOut,
+                      child: Text('Signout',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold)),
+                      color: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      child: Text(
+                        'GO to QUIZ',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline, fontSize: 20),
+                      ),
+                      onTap: movetowelcome,
+                    )
+                  ],
                 ),
-                Container(
-                  child: Text(
-                    "Hello ${user.displayName} you are Logged in as ${user.email}",
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                RaisedButton(
-                  padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                  onPressed: signOut,
-                  child: Text('Signout',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold)),
-                  color: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                )
-              ],
-            ),
-    ));
+        ));
   }
 }
