@@ -1,5 +1,5 @@
 import 'package:authentification/Science/controllers/question_controller.dart';
-import 'package:authentification/screens/quiz/components/body.dart';
+import 'package:authentification/Science/quiz/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

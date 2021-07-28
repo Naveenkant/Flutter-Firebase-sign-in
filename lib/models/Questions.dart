@@ -9,33 +9,43 @@ class Question {
 const List sample_data = [
   {
     "id": 1,
-    "question":
-        "Flutter is an open-source UI software development kit created by ______",
-    "options": ['Apple', 'Google', 'Facebook', 'Microsoft'],
+    "question": "Which crop is sown on the largest area in India?",
+    "options": ['Rice', 'Wheat', 'SugarCane', 'Maize'],
     "answer_index": 1,
   },
   {
     "id": 2,
-    "question": "When google release Flutter.",
-    "options": ['Jun 2017', 'Jun 2017', 'May 2017', 'May 2018'],
+    "question": "Entomology is the science that studies",
+    "options": [
+      'Behaviour of human beings',
+      'Insects',
+      'The origin and history of technical',
+      'The formation of rocks'
+    ],
     "answer_index": 2,
   },
   {
     "id": 3,
-    "question": "A memory location that holds a single letter or number.",
-    "options": ['Double', 'Int', 'Char', 'Word'],
+    "question": " Grand Central Terminal, Park Avenue, New York is the world's",
+    "options": [
+      ' highest railway station',
+      'longest railway station',
+      'largest railway station',
+      'None of the above'
+    ],
     "answer_index": 2,
   },
   {
     "id": 4,
-    "question": "What command do you use to output data to the screen?",
-    "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
+    "question": "The world smallest country is?",
+    "options": ['Canada', 'Russia', 'Maldives', 'Vatican City'],
     "answer_index": 2,
   },
   {
     "id": 5,
-    "question": "who is the CEO of Amazon Company ? ",
-    "options": ['Jeff Bezos', 'Endy Jassy', 'Nelson Mandela', 'Sundar Pichai'],
+    "question":
+        "Novak Djokovic is a famous player associated with the game of?",
+    "options": ['Hockey', 'Football', 'Chess', 'Lawn Tennis'],
     "answer_index": 1,
   },
 ];

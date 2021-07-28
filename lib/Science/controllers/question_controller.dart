@@ -1,7 +1,5 @@
-// import 'package:authentification/flutterquiz/models/Questions.dart';
 import 'package:authentification/Science/models/ScienceQues.dart';
-import 'package:authentification/screens/quiz/quiz_screen.dart';
-import 'package:authentification/screens/score/score_screen.dart';
+import 'package:authentification/Science/quiz/score/score_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';

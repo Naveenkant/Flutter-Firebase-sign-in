@@ -1,9 +1,9 @@
 import 'package:authentification/screens/quiz/quiz_screen.dart';
 import 'package:authentification/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import '../../constants.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'package:get/get.dart';
+// import '../../constants.dart';
 import 'Science/quiz/science_quizscreen.dart';
 
 class Everybody extends StatefulWidget {
@@ -60,6 +60,7 @@ class _EverybodyState extends State<Everybody> {
               child: ListView(
                 padding: const EdgeInsets.all(5),
                 children: [
+                  // 1
                   GestureDetector(
                     child: Container(
                       decoration: BoxDecoration(
@@ -93,6 +94,7 @@ class _EverybodyState extends State<Everybody> {
                     ),
                     onTap: movetoquizscreen,
                   ),
+                  // 2
                   GestureDetector(
                     child: Container(
                       decoration: BoxDecoration(
@@ -124,7 +126,7 @@ class _EverybodyState extends State<Everybody> {
                       width: MediaQuery.of(context).size.width,
                       height: 150,
                     ),
-                    onTap: movetoWelcome,
+                    onTap: movetosciencequiz,
                   ),
                   GestureDetector(
                     child: Container(
