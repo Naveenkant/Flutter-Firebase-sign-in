@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   // }
 
   movetowelcome() async {
-    Navigator.pushReplacement(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
   }
 
@@ -93,6 +93,22 @@ class _HomePageState extends State<HomePage> {
               ? Center(child: CircularProgressIndicator())
               : Column(
                   children: <Widget>[
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: RaisedButton(
+                        // padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                        onPressed: signOut,
+                        child: Text('Signout',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold)),
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
                     SizedBox(height: 40.0),
                     Container(
                       height: 200,
@@ -103,12 +119,24 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        "Hello ${user.displayName} you are Logged in as email : ${user.email}",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Hello ${user.displayName} ",
+                            style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "email : ${user.email}",
+                            style: TextStyle(
+                                fontSize: 20.0, color: Colors.black38),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -116,8 +144,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                     RaisedButton(
                       padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                      onPressed: signOut,
-                      child: Text('Signout',
+                      onPressed: movetowelcome,
+                      child: Text('GO TO QUIZ',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.0,
@@ -130,14 +158,6 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 20,
                     ),
-                    GestureDetector(
-                      child: Text(
-                        'GO to QUIZ',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline, fontSize: 20),
-                      ),
-                      onTap: movetowelcome,
-                    )
                   ],
                 ),
         ));

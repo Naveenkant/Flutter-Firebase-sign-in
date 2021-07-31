@@ -40,11 +40,11 @@ class _StartState extends State<Start> {
   }
 
   navigateToLogin() async {
-    Navigator.pushReplacementNamed(context, "Login");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
   }
 
   navigateToRegister() async {
-    Navigator.pushReplacementNamed(context, "SignUp");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
   }
 
   @override

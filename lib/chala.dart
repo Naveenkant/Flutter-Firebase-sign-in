@@ -13,17 +13,17 @@ class Everybody extends StatefulWidget {
 
 class _EverybodyState extends State<Everybody> {
   movetoWelcome() async {
-    Navigator.pushReplacement(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
   }
 
   movetoquizscreen() async {
-    Navigator.pushReplacement(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => QuizScreen()));
   }
 
   movetosciencequiz() async {
-    Navigator.pushReplacement(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => ScienceQuizScreen()));
   }
 

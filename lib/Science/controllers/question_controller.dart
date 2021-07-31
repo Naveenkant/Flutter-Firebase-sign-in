@@ -108,9 +108,10 @@ class QuestionController extends GetxController
     } else {
       // Get package provide us simple way to naviigate another page
       check = true;
+    }
+    if (check == true) {
       Get.to(ScoreScreen());
     }
-    if (check == true) {}
   }
 
   void updateTheQnNum(int index) {
